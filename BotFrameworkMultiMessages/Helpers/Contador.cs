@@ -1,4 +1,4 @@
-﻿namespace BotNaturalLanguage.Auxiliares
+﻿namespace BotFrameworkMultiMessages
 {
     public class Contador
     {

@@ -1,4 +1,4 @@
-﻿using BotNaturalLanguage.Auxiliares;
+﻿using BotFrameworkMultiMessages;
 using Microsoft.Bot.Builder.CognitiveServices.QnAMaker;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Luis.Models;
@@ -26,7 +26,7 @@ namespace BotNaturalLanguage.Dialogs
         [LuisIntent("Cumprimento")]
         public async Task Cumprimento(IDialogContext context, LuisResult result)
         {
-            ConversationStarter.textReference = string.Empty;
+            ConversationStarter.TextReference = string.Empty;
             await context.PostAsync($"Texto enviado: {result.Query}");
             var qnaService = new QnAMakerService(new QnAMakerAttribute(qnaSubscriptionKey, qnaKnowledgebaseId, "Buguei aqui, pera!  ¯＼(º_o)/¯"));
             var qnaMaker = new QnAMakerDialog(qnaService);
@@ -41,7 +41,7 @@ namespace BotNaturalLanguage.Dialogs
         [LuisIntent("None")]
         public async Task None(IDialogContext context, LuisResult result)
         {
-            ConversationStarter.textReference = string.Empty;
+            ConversationStarter.TextReference = string.Empty;
             await context.PostAsync($"Eita, não consegui entender a frase {result.Query}");
         }
     }

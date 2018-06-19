@@ -1,9 +1,11 @@
-﻿using System.Net;
+﻿using BotFrameworkMultiMessages;
+using BotNaturalLanguage.Dialogs;
+using Microsoft.Bot.Builder.Dialogs;
+using Microsoft.Bot.Connector;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
-using Microsoft.Bot.Builder.Dialogs;
-using Microsoft.Bot.Connector;
 
 namespace BotNaturalLanguage
 {
@@ -18,7 +20,7 @@ namespace BotNaturalLanguage
         {
             if (activity.Type == ActivityTypes.Message)
             {
-                await Conversation.SendAsync(activity, () => new Dialogs.RootDialog());
+                await Conversation.SendAsync(activity, () => new MultiMessageDialog(new LuisMainDialog(),5));
             }
             else
             {
